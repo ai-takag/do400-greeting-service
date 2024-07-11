@@ -22,5 +22,14 @@ pipeline{
         }
 
         // Add the "Deploy" stage here
+        stage('Deploy') {
+            steps {
+                sh '''
+                    oc project tliesj-greeting
+                    oc start-build greeting-service --follow --wait
+                '''
+            }
+        }
+  
     }
 }
